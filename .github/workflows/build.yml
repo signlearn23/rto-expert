@@ -40,9 +40,20 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Check formatting
-        run: dart format --output=none --set-exit-if-changed .
+      - name: Format Dart code
+        run: dart format .
 
+      - name: Commit formatting changes
+        run: | 
+               git config user.name "github-actions[bot]"
+               git config user.email "41898282+github-action[bot]@users.noreply.github.com"
+               if [[ -n "$(git status --porcelain)" ]]; then 
+                 git add .
+                 git commit -m "chore: format Dart code"
+                 git push
+               else
+                 echo "No formatting changes."
+               fi
       - name: Analyze
         run: flutter analyze
 
