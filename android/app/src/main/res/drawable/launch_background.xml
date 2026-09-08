@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Plain solid background shown for the brief moment before Flutter's
+     first frame renders. Color matches AppColors.lightBackground
+     (#F7F8FA) — update both together if you rebrand. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@android:color/white" />
+</layer-list>
