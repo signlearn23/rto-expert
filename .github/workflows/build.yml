@@ -12,7 +12,7 @@ on:
   workflow_dispatch: {} # lets you trigger it manually from the Actions tab
 permissions:
   contents: write
-  
+
 
 env:
   # Flutter 3.44 is current stable as of Sep 2026. Run `flutter --version`
@@ -26,7 +26,7 @@ env:
   # (Android 9.0+) as the device floor.
   FLUTTER_VERSION: "3.44.0"
 
-jobs: 
+jobs:
   analyze_and_test:
     name: Analyze & Test
     runs-on: ubuntu-latest
@@ -47,10 +47,10 @@ jobs:
         run: dart format .
 
       - name: Commit formatting changes
-        run: | 
+        run: |
                git config user.name "github-actions[bot]"
                git config user.email "41898282+github-action[bot]@users.noreply.github.com"
-               if [[ -n "$(git status --porcelain)" ]]; then 
+               if [[ -n "$(git status --porcelain)" ]]; then
                  git add .
                  git commit -m "chore: format Dart code"
                  git push
@@ -62,13 +62,6 @@ jobs:
 
       - name: Run tests
         run: flutter test
-
-      - name: Debug - list mipmap resources
-        run: |
-          echo "--- mipmap folders ---"
-          find android/app/src/main/res -iname "*mipmap*" -o -iname "ic_launcher*"
-          echo "--- gitignore matches ---"
-          grep -i -E "mipmap|\.png|icon" .gitignore || echo "no matches"
 
   build_debug_apk:
     name: Build Debug APK
@@ -96,7 +89,8 @@ jobs:
 
       # gradle-wrapper.jar is a binary file, so it isn't checked into the
       # repo — this regenerates it fresh on every run to match
-      # gradle/wrapper/gradle-wrapper.properties (Gradle 8.11).
+      # gradle/wrapper/gradle-wrapper.properties (Gradle 9.7.1, required by
+      # AGP 9).
       - name: Generate Gradle wrapper jar
         uses: gradle/actions/setup-gradle@v4
       - run: gradle wrapper --gradle-version 9.7.1
@@ -136,9 +130,13 @@ jobs:
           distribution: temurin
           java-version: "17"
 
+      # gradle-wrapper.jar is a binary file, so it isn't checked into the
+      # repo — this regenerates it fresh on every run to match
+      # gradle/wrapper/gradle-wrapper.properties (Gradle 9.7.1, required by
+      # AGP 9).
       - name: Generate Gradle wrapper jar
         uses: gradle/actions/setup-gradle@v4
-      - run: gradle wrapper --gradle-version 8.11
+      - run: gradle wrapper --gradle-version 9.7.1
         working-directory: android
 
       # --- Signing setup ---
