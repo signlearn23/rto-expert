@@ -10,6 +10,9 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch: {} # lets you trigger it manually from the Actions tab
+permissions:
+  contents: write
+  
 
 env:
   # Flutter 3.44 is current stable as of Sep 2026. Run `flutter --version`
