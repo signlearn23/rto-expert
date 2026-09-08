@@ -256,6 +256,16 @@
       ]
     },
     {
+      "name": "webview_flutter",
+      "version": "4.14.1",
+      "dependencies": [
+        "flutter",
+        "webview_flutter_android",
+        "webview_flutter_platform_interface",
+        "webview_flutter_wkwebview"
+      ]
+    },
+    {
       "name": "webview_flutter_wkwebview",
       "version": "3.26.1",
       "dependencies": [
@@ -272,16 +282,6 @@
         "flutter",
         "meta",
         "webview_flutter_platform_interface"
-      ]
-    },
-    {
-      "name": "webview_flutter",
-      "version": "4.14.1",
-      "dependencies": [
-        "flutter",
-        "webview_flutter_android",
-        "webview_flutter_platform_interface",
-        "webview_flutter_wkwebview"
       ]
     },
     {
