@@ -63,6 +63,13 @@ jobs:
       - name: Run tests
         run: flutter test
 
+      - name: Debug - list mipmap resources
+        run: |
+          echo "--- mipmap folders ---"
+          find android/app/src/main/res -iname "*mipmap*" -o -iname "ic_launcher*"
+          echo "--- gitignore matches ---"
+          grep -i -E "mipmap|\.png|icon" .gitignore || echo "no matches"
+
   build_debug_apk:
     name: Build Debug APK
     needs: analyze_and_test
