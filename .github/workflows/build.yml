@@ -24,6 +24,10 @@ env:
   FLUTTER_VERSION: "3.44.0"
 
 jobs:
+
+  - name: Check formatting
+    run: dart format --output=none --set-exit-if-changed .  
+    
   analyze_and_test:
     name: Analyze & Test
     runs-on: ubuntu-latest
