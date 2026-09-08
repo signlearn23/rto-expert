@@ -27,7 +27,7 @@ dependencies:
   geolocator: ^12.0.0
 
   # Ads (banner + rewarded interstitial)
-  google_mobile_ads: ^5.1.0
+  google_mobile_ads: ^8.0.0
 
   # Networking (moderation queue, remote question-bank updates, payments)
   http: ^1.2.1
