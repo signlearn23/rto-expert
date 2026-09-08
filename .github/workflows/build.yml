@@ -92,7 +92,7 @@ jobs:
       # gradle/wrapper/gradle-wrapper.properties (Gradle 8.11).
       - name: Generate Gradle wrapper jar
         uses: gradle/actions/setup-gradle@v4
-      - run: gradle wrapper --gradle-version 8.11
+      - run: gradle wrapper --gradle-version 9.7.1
         working-directory: android
 
       - name: Build debug APK
