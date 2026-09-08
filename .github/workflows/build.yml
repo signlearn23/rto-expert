@@ -23,11 +23,7 @@ env:
   # (Android 9.0+) as the device floor.
   FLUTTER_VERSION: "3.44.0"
 
-jobs:
-
-  - name: Check formatting
-    run: dart format --output=none --set-exit-if-changed .  
-    
+jobs: 
   analyze_and_test:
     name: Analyze & Test
     runs-on: ubuntu-latest
